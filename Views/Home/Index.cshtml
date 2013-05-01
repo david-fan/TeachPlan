@@ -1,0 +1,210 @@
+﻿@model TeachPlan.Plan
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@Model.Name - @Model.Author</h2>
+<script>
+    $(function () {
+        $("#tabs").tabs();
+        /*
+        jQuery.extend(jQuery.validator.messages, {
+        required: "必选字段",
+        remote: "请修正该字段",
+        email: "请输入正确格式的电子邮件",
+        url: "请输入合法的网址",
+        date: "请输入合法的日期",
+        dateISO: "请输入合法的日期 (ISO).",
+        number: "请输入合法的数字",
+        digits: "只能输入整数",
+        creditcard: "请输入合法的信用卡号",
+        equalTo: "请再次输入相同的值",
+        accept: "请输入拥有合法后缀名的字符串",
+        maxlength: jQuery.format("请输入一个长度最多是 {0} 的字符串"),
+        minlength: jQuery.format("请输入一个长度最少是 {0} 的字符串"),
+        rangelength: jQuery.format("请输入一个长度介于 {0} 和 {1} 之间的字符串"),
+        range: jQuery.format("请输入一个介于 {0} 和 {1} 之间的值"),
+        max: jQuery.format("请输入一个最大为 {0} 的值"),
+        min: jQuery.format("请输入一个最小为 {0} 的值")
+        });
+        */
+    });
+    function saveSucess(data) {
+        alert(data);
+    }
+</script>
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">基础信息</a></li>
+        <li><a href="#tabs-2">教学目标</a></li>
+        <li><a href="#tabs-3">学习者特征分析</a></li>
+        <li><a href="#tabs-4">教学重点难点</a></li>
+        <li><a href="#tabs-5">教学资源准备</a></li>
+        <li><a href="#tabs-6">教学环节(活动)</a></li>
+        <li><a href="#tabs-7">反思评价</a></li>
+    </ul>
+    <div id="tabs-1">
+        <p>
+            @using (Ajax.BeginForm("SaveBasicInfo", "Home", new AjaxOptions
+        {
+            // LoadingElementId="loading",
+            // LoadingElementDuration=1,
+            // UpdateTargetId="tabs-1",
+            // InsertionMode = InsertionMode.InsertAfter,
+            HttpMethod = "POST",
+            OnSuccess = "saveSucess"
+        }))
+            {
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Name)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.ClassName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.ClassName)
+                    @Html.ValidationMessageFor(m => m.ClassName)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Organiser)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Organiser)
+                    @Html.ValidationMessageFor(m => m.Organiser)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Public)
+                </div>
+                <div class="editor-field">
+                    @Html.CheckBoxFor(m => m.Public)
+                    @Html.ValidationMessageFor(m => m.Public)
+                </div>
+               <div class="editor-label">
+                    @Html.LabelFor(m => m.Subject)
+                </div>
+                <div class="editor-field">
+                   @Html.DropDownListFor(m => m.Subject.Id, TeachPlan.Controllers.HomeController.getAllSubjects())  
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Grade)
+                </div>
+                <div class="editor-field">
+                   @Html.DropDownListFor(m => m.Grade.Id, TeachPlan.Controllers.HomeController.getAllGrades())  
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Textbook)
+                </div>
+                <div class="editor-field">
+                   @Html.DropDownListFor(m => m.Textbook.Id, TeachPlan.Controllers.HomeController.getAllTextbooks())  
+                </div>
+                <input type="submit" value="保存" />                                           
+            }
+        </p>
+    </div>
+    <div id="loading">
+        loading~</div>
+    <div id="tabs-2">
+        <p>
+            2Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra
+            massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget
+            luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean
+            aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent
+            in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat
+            nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque
+            convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod
+            felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+    </div>
+    <div id="tabs-3">
+        <p>
+            3Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate,
+            pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem.
+            Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo
+            pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem
+            enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+        <p>
+            Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam
+            ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing
+            velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula
+            faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero
+            sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor
+            ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas
+            commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit
+            hendrerit.</p>
+    </div>
+    <div id="tabs-4">
+        <p>
+            4Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate,
+            pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem.
+            Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo
+            pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem
+            enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+        <p>
+            Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam
+            ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing
+            velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula
+            faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero
+            sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor
+            ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas
+            commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit
+            hendrerit.</p>
+    </div>
+    <div id="tabs-5">
+        <p>
+            5Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate,
+            pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem.
+            Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo
+            pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem
+            enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+        <p>
+            Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam
+            ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing
+            velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula
+            faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero
+            sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor
+            ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas
+            commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit
+            hendrerit.</p>
+    </div>
+    <div id="tabs-6">
+        <p>
+            6Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate,
+            pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem.
+            Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo
+            pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem
+            enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+        <p>
+            Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam
+            ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing
+            velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula
+            faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero
+            sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor
+            ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas
+            commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit
+            hendrerit.</p>
+    </div>
+    <div id="tabs-7">
+        <p>
+            7Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate,
+            pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem.
+            Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo
+            pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem
+            enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+        <p>
+            Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam
+            ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing
+            velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula
+            faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero
+            sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor
+            ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas
+            commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit
+            hendrerit.</p>
+    </div>
+</div>

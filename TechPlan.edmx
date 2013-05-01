@@ -1,0 +1,1216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JiaoxueJihua.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="JiaoxueJihuaStoreContainer">
+    <EntitySet Name="PlanSet" EntityType="JiaoxueJihua.Store.PlanSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ThinkSet" EntityType="JiaoxueJihua.Store.ThinkSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JudgeSet" EntityType="JiaoxueJihua.Store.JudgeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReadySet" EntityType="JiaoxueJihua.Store.ReadySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TargetSet" EntityType="JiaoxueJihua.Store.TargetSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActiveSet" EntityType="JiaoxueJihua.Store.ActiveSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CharacterSet" EntityType="JiaoxueJihua.Store.CharacterSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PointSet" EntityType="JiaoxueJihua.Store.PointSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MethodSet" EntityType="JiaoxueJihua.Store.MethodSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StepSet" EntityType="JiaoxueJihua.Store.StepSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubjectSet" EntityType="JiaoxueJihua.Store.SubjectSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentSet" EntityType="JiaoxueJihua.Store.ContentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhaseSet" EntityType="JiaoxueJihua.Store.PhaseSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfoSet" EntityType="JiaoxueJihua.Store.UserInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GradeSet" EntityType="JiaoxueJihua.Store.GradeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TextbookSet" EntityType="JiaoxueJihua.Store.TextbookSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentHuodong" EntityType="JiaoxueJihua.Store.ContentHuodong" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StepHuodong" EntityType="JiaoxueJihua.Store.StepHuodong" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhaseActive" EntityType="JiaoxueJihua.Store.PhaseActive" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ContentHuodong_Content" Association="JiaoxueJihua.Store.FK_ContentHuodong_Content">
+      <End Role="Content" EntitySet="ContentSet" />
+      <End Role="ContentHuodong" EntitySet="ContentHuodong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentHuodong_Huodong" Association="JiaoxueJihua.Store.FK_ContentHuodong_Huodong">
+      <End Role="Huodong" EntitySet="ActiveSet" />
+      <End Role="ContentHuodong" EntitySet="ContentHuodong" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectHuodong" Association="JiaoxueJihua.Store.SubjectHuodong">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="Huodong" EntitySet="ActiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepHuodong_Step" Association="JiaoxueJihua.Store.FK_StepHuodong_Step">
+      <End Role="Step" EntitySet="StepSet" />
+      <End Role="StepHuodong" EntitySet="StepHuodong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepHuodong_Huodong" Association="JiaoxueJihua.Store.FK_StepHuodong_Huodong">
+      <End Role="Huodong" EntitySet="ActiveSet" />
+      <End Role="StepHuodong" EntitySet="StepHuodong" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectFangan" Association="JiaoxueJihua.Store.SubjectFangan">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="Fangan" EntitySet="PlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="GradeFangan" Association="JiaoxueJihua.Store.GradeFangan">
+      <End Role="Grade" EntitySet="GradeSet" />
+      <End Role="Fangan" EntitySet="PlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="TextbookFangan" Association="JiaoxueJihua.Store.TextbookFangan">
+      <End Role="Textbook" EntitySet="TextbookSet" />
+      <End Role="Fangan" EntitySet="PlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseActive_Phase" Association="JiaoxueJihua.Store.FK_PhaseActive_Phase">
+      <End Role="Phase" EntitySet="PhaseSet" />
+      <End Role="PhaseActive" EntitySet="PhaseActive" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseActive_Active" Association="JiaoxueJihua.Store.FK_PhaseActive_Active">
+      <End Role="Active" EntitySet="ActiveSet" />
+      <End Role="PhaseActive" EntitySet="PhaseActive" />
+    </AssociationSet>
+    <AssociationSet Name="PlanThink" Association="JiaoxueJihua.Store.PlanThink">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Think" EntitySet="ThinkSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanReady" Association="JiaoxueJihua.Store.PlanReady">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Ready" EntitySet="ReadySet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanJudge" Association="JiaoxueJihua.Store.PlanJudge">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Judge" EntitySet="JudgeSet" />
+    </AssociationSet>
+    <AssociationSet Name="PointMethod" Association="JiaoxueJihua.Store.PointMethod">
+      <End Role="Point" EntitySet="PointSet" />
+      <End Role="Method" EntitySet="MethodSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanPoint" Association="JiaoxueJihua.Store.PlanPoint">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Point" EntitySet="PointSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanCharacter" Association="JiaoxueJihua.Store.PlanCharacter">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Character" EntitySet="CharacterSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanTarget" Association="JiaoxueJihua.Store.PlanTarget">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Target" EntitySet="TargetSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanActive" Association="JiaoxueJihua.Store.PlanActive">
+      <End Role="Plan" EntitySet="PlanSet" />
+      <End Role="Active" EntitySet="ActiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="ActiveActive" Association="JiaoxueJihua.Store.ActiveActive">
+      <End Role="Active" EntitySet="ActiveSet" />
+      <End Role="Active1" EntitySet="ActiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserInfoPlan" Association="JiaoxueJihua.Store.UserInfoPlan">
+      <End Role="UserInfo" EntitySet="UserInfoSet" />
+      <End Role="Plan" EntitySet="PlanSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PlanSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Author" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Organiser" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Refer" Type="int" Nullable="false" />
+    <Property Name="Public" Type="bit" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+    <Property Name="Grade_Id" Type="int" Nullable="false" />
+    <Property Name="Textbook_Id" Type="int" Nullable="false" />
+    <Property Name="UserInfo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThinkSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JudgeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReadySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TargetSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Baseic" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Advance" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActiveSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+    <Property Name="ParentActive_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CharacterSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PointSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Plan_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MethodSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Point_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StepSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhaseSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PWD" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GradeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TextbookSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentHuodong">
+    <Key>
+      <PropertyRef Name="Content_Id" />
+      <PropertyRef Name="Huodong_Id" />
+    </Key>
+    <Property Name="Content_Id" Type="int" Nullable="false" />
+    <Property Name="Huodong_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StepHuodong">
+    <Key>
+      <PropertyRef Name="Step_Id" />
+      <PropertyRef Name="Huodong_Id" />
+    </Key>
+    <Property Name="Step_Id" Type="int" Nullable="false" />
+    <Property Name="Huodong_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhaseActive">
+    <Key>
+      <PropertyRef Name="Phase_Id" />
+      <PropertyRef Name="Active_Id" />
+    </Key>
+    <Property Name="Phase_Id" Type="int" Nullable="false" />
+    <Property Name="Active_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="SubjectHuodong">
+    <End Role="Subject" Type="JiaoxueJihua.Store.SubjectSet" Multiplicity="1" />
+    <End Role="Huodong" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Huodong">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectFangan">
+    <End Role="Subject" Type="JiaoxueJihua.Store.SubjectSet" Multiplicity="1" />
+    <End Role="Fangan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fangan">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradeFangan">
+    <End Role="Grade" Type="JiaoxueJihua.Store.GradeSet" Multiplicity="1" />
+    <End Role="Fangan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fangan">
+        <PropertyRef Name="Grade_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TextbookFangan">
+    <End Role="Textbook" Type="JiaoxueJihua.Store.TextbookSet" Multiplicity="1" />
+    <End Role="Fangan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Textbook">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fangan">
+        <PropertyRef Name="Textbook_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanThink">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Think" Type="JiaoxueJihua.Store.ThinkSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Think">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanReady">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Ready" Type="JiaoxueJihua.Store.ReadySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ready">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanJudge">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Judge" Type="JiaoxueJihua.Store.JudgeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Judge">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PointMethod">
+    <End Role="Point" Type="JiaoxueJihua.Store.PointSet" Multiplicity="1" />
+    <End Role="Method" Type="JiaoxueJihua.Store.MethodSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Point">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Method">
+        <PropertyRef Name="Point_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanPoint">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Point" Type="JiaoxueJihua.Store.PointSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Point">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanCharacter">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Character" Type="JiaoxueJihua.Store.CharacterSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Character">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanTarget">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Target" Type="JiaoxueJihua.Store.TargetSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Target">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanActive">
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="1" />
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active">
+        <PropertyRef Name="Plan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActiveActive">
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
+    <End Role="Active1" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Active">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active1">
+        <PropertyRef Name="ParentActive_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserInfoPlan">
+    <End Role="UserInfo" Type="JiaoxueJihua.Store.UserInfoSet" Multiplicity="1" />
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Plan">
+        <PropertyRef Name="UserInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentHuodong_Content">
+    <End Role="Content" Type="JiaoxueJihua.Store.ContentSet" Multiplicity="1" />
+    <End Role="ContentHuodong" Type="JiaoxueJihua.Store.ContentHuodong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentHuodong">
+        <PropertyRef Name="Content_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentHuodong_Huodong">
+    <End Role="ContentHuodong" Type="JiaoxueJihua.Store.ContentHuodong" Multiplicity="*" />
+    <End Role="Huodong" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Huodong">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentHuodong">
+        <PropertyRef Name="Huodong_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepHuodong_Step">
+    <End Role="Step" Type="JiaoxueJihua.Store.StepSet" Multiplicity="1" />
+    <End Role="StepHuodong" Type="JiaoxueJihua.Store.StepHuodong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Step">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepHuodong">
+        <PropertyRef Name="Step_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepHuodong_Huodong">
+    <End Role="StepHuodong" Type="JiaoxueJihua.Store.StepHuodong" Multiplicity="*" />
+    <End Role="Huodong" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Huodong">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepHuodong">
+        <PropertyRef Name="Huodong_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseActive_Phase">
+    <End Role="Phase" Type="JiaoxueJihua.Store.PhaseSet" Multiplicity="1" />
+    <End Role="PhaseActive" Type="JiaoxueJihua.Store.PhaseActive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phase">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseActive">
+        <PropertyRef Name="Phase_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseActive_Active">
+    <End Role="PhaseActive" Type="JiaoxueJihua.Store.PhaseActive" Multiplicity="*" />
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Active">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseActive">
+        <PropertyRef Name="Active_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="JiaoxueJihua" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="JiaoxueJihuaContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PlanSet" EntityType="JiaoxueJihua.Plan" />
+          <EntitySet Name="ThinkSet" EntityType="JiaoxueJihua.Think" />
+          <EntitySet Name="JudgeSet" EntityType="JiaoxueJihua.Judge" />
+          <EntitySet Name="ReadySet" EntityType="JiaoxueJihua.Ready" />
+          <EntitySet Name="TargetSet" EntityType="JiaoxueJihua.Target" />
+          <EntitySet Name="ActiveSet" EntityType="JiaoxueJihua.Active" />
+          <EntitySet Name="CharacterSet" EntityType="JiaoxueJihua.Character" />
+          <EntitySet Name="PointSet" EntityType="JiaoxueJihua.Point" />
+          <EntitySet Name="MethodSet" EntityType="JiaoxueJihua.Method" />
+          <EntitySet Name="StepSet" EntityType="JiaoxueJihua.Step" />
+          <EntitySet Name="SubjectSet" EntityType="JiaoxueJihua.Subject" />
+          <EntitySet Name="ContentSet" EntityType="JiaoxueJihua.Content" />
+          <EntitySet Name="PhaseSet" EntityType="JiaoxueJihua.Phase" />
+          <AssociationSet Name="ContentHuodong" Association="JiaoxueJihua.ContentHuodong">
+            <End Role="Content" EntitySet="ContentSet" />
+            <End Role="Huodong" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectHuodong" Association="JiaoxueJihua.SubjectHuodong">
+            <End Role="Subject" EntitySet="SubjectSet" />
+            <End Role="Huodong" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="StepHuodong" Association="JiaoxueJihua.StepHuodong">
+            <End Role="Step" EntitySet="StepSet" />
+            <End Role="Huodong" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <EntitySet Name="UserInfoSet" EntityType="JiaoxueJihua.UserInfo" />
+          <EntitySet Name="GradeSet" EntityType="JiaoxueJihua.Grade" />
+          <AssociationSet Name="SubjectFangan" Association="JiaoxueJihua.SubjectFangan">
+            <End Role="Subject" EntitySet="SubjectSet" />
+            <End Role="Fangan" EntitySet="PlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="GradeFangan" Association="JiaoxueJihua.GradeFangan">
+            <End Role="Grade" EntitySet="GradeSet" />
+            <End Role="Fangan" EntitySet="PlanSet" />
+          </AssociationSet>
+          <EntitySet Name="TextbookSet" EntityType="JiaoxueJihua.Textbook" />
+          <AssociationSet Name="TextbookFangan" Association="JiaoxueJihua.TextbookFangan">
+            <End Role="Textbook" EntitySet="TextbookSet" />
+            <End Role="Fangan" EntitySet="PlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="PhaseActive" Association="JiaoxueJihua.PhaseActive">
+            <End Role="Phase" EntitySet="PhaseSet" />
+            <End Role="Active" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanThink" Association="JiaoxueJihua.PlanThink">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Think" EntitySet="ThinkSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanReady" Association="JiaoxueJihua.PlanReady">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Ready" EntitySet="ReadySet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanJudge" Association="JiaoxueJihua.PlanJudge">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Judge" EntitySet="JudgeSet" />
+          </AssociationSet>
+          <AssociationSet Name="PointMethod" Association="JiaoxueJihua.PointMethod">
+            <End Role="Point" EntitySet="PointSet" />
+            <End Role="Method" EntitySet="MethodSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanPoint" Association="JiaoxueJihua.PlanPoint">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Point" EntitySet="PointSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanCharacter" Association="JiaoxueJihua.PlanCharacter">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Character" EntitySet="CharacterSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanTarget" Association="JiaoxueJihua.PlanTarget">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Target" EntitySet="TargetSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanActive" Association="JiaoxueJihua.PlanActive">
+            <End Role="Plan" EntitySet="PlanSet" />
+            <End Role="Active" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="ActiveActive" Association="JiaoxueJihua.ActiveActive">
+            <End Role="Active" EntitySet="ActiveSet" />
+            <End Role="Active1" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserInfoPlan" Association="JiaoxueJihua.UserInfoPlan">
+            <End Role="UserInfo" EntitySet="UserInfoSet" />
+            <End Role="Plan" EntitySet="PlanSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Desc" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="JiaoxueJihua.SubjectFangan" FromRole="Fangan" ToRole="Subject" />
+          <NavigationProperty Name="Grade" Relationship="JiaoxueJihua.GradeFangan" FromRole="Fangan" ToRole="Grade" />
+          <NavigationProperty Name="Textbook" Relationship="JiaoxueJihua.TextbookFangan" FromRole="Fangan" ToRole="Textbook" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Author" Nullable="false" />
+          <Property Type="String" Name="Organiser" Nullable="false" />
+          <Property Type="Int32" Name="Refer" Nullable="false" />
+          <Property Type="Boolean" Name="Public" Nullable="false" />
+          <NavigationProperty Name="Think" Relationship="JiaoxueJihua.PlanThink" FromRole="Plan" ToRole="Think" />
+          <NavigationProperty Name="Ready" Relationship="JiaoxueJihua.PlanReady" FromRole="Plan" ToRole="Ready" />
+          <NavigationProperty Name="Judge" Relationship="JiaoxueJihua.PlanJudge" FromRole="Plan" ToRole="Judge" />
+          <NavigationProperty Name="Point" Relationship="JiaoxueJihua.PlanPoint" FromRole="Plan" ToRole="Point" />
+          <NavigationProperty Name="Character" Relationship="JiaoxueJihua.PlanCharacter" FromRole="Plan" ToRole="Character" />
+          <NavigationProperty Name="Target" Relationship="JiaoxueJihua.PlanTarget" FromRole="Plan" ToRole="Target" />
+          <NavigationProperty Name="Active" Relationship="JiaoxueJihua.PlanActive" FromRole="Plan" ToRole="Active" />
+          <Property Type="String" Name="ClassName" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="JiaoxueJihua.UserInfoPlan" FromRole="Plan" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Think">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanThink" FromRole="Think" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Judge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanJudge" FromRole="Judge" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Ready">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanReady" FromRole="Ready" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Target">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Baseic" Nullable="false" />
+          <Property Type="String" Name="Advance" Nullable="false" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanTarget" FromRole="Target" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Active">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="JiaoxueJihua.ContentHuodong" FromRole="Huodong" ToRole="Content" />
+          <NavigationProperty Name="Subject" Relationship="JiaoxueJihua.SubjectHuodong" FromRole="Huodong" ToRole="Subject" />
+          <NavigationProperty Name="Step" Relationship="JiaoxueJihua.StepHuodong" FromRole="Huodong" ToRole="Step" />
+          <NavigationProperty Name="Phase" Relationship="JiaoxueJihua.PhaseActive" FromRole="Active" ToRole="Phase" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanActive" FromRole="Active" ToRole="Plan" />
+          <NavigationProperty Name="ChildActives" Relationship="JiaoxueJihua.ActiveActive" FromRole="Active" ToRole="Active1" />
+          <NavigationProperty Name="ParentActive" Relationship="JiaoxueJihua.ActiveActive" FromRole="Active1" ToRole="Active" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanCharacter" FromRole="Character" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Point">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <NavigationProperty Name="Method" Relationship="JiaoxueJihua.PointMethod" FromRole="Point" ToRole="Method" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanPoint" FromRole="Point" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Method">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <NavigationProperty Name="Point" Relationship="JiaoxueJihua.PointMethod" FromRole="Method" ToRole="Point" />
+        </EntityType>
+        <EntityType Name="Step">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Huodong" Relationship="JiaoxueJihua.StepHuodong" FromRole="Step" ToRole="Huodong" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Huodong" Relationship="JiaoxueJihua.SubjectHuodong" FromRole="Subject" ToRole="Huodong" />
+          <NavigationProperty Name="Fangan" Relationship="JiaoxueJihua.SubjectFangan" FromRole="Subject" ToRole="Fangan" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Huodong" Relationship="JiaoxueJihua.ContentHuodong" FromRole="Content" ToRole="Huodong" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Active" Relationship="JiaoxueJihua.PhaseActive" FromRole="Phase" ToRole="Active" />
+        </EntityType>
+        <Association Name="ContentHuodong">
+          <End Type="JiaoxueJihua.Content" Role="Content" Multiplicity="*" />
+          <End Type="JiaoxueJihua.Active" Role="Huodong" Multiplicity="*" />
+        </Association>
+        <Association Name="SubjectHuodong">
+          <End Type="JiaoxueJihua.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Huodong" Multiplicity="*" />
+        </Association>
+        <Association Name="StepHuodong">
+          <End Type="JiaoxueJihua.Step" Role="Step" Multiplicity="*" />
+          <End Type="JiaoxueJihua.Active" Role="Huodong" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="PWD" Nullable="false" />
+          <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.UserInfoPlan" FromRole="UserInfo" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Fangan" Relationship="JiaoxueJihua.GradeFangan" FromRole="Grade" ToRole="Fangan" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <Association Name="SubjectFangan">
+          <End Type="JiaoxueJihua.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Plan" Role="Fangan" Multiplicity="*" />
+        </Association>
+        <Association Name="GradeFangan">
+          <End Type="JiaoxueJihua.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Plan" Role="Fangan" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Textbook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Fangan" Relationship="JiaoxueJihua.TextbookFangan" FromRole="Textbook" ToRole="Fangan" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <Association Name="TextbookFangan">
+          <End Type="JiaoxueJihua.Textbook" Role="Textbook" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Plan" Role="Fangan" Multiplicity="*" />
+        </Association>
+        <Association Name="PhaseActive">
+          <End Type="JiaoxueJihua.Phase" Role="Phase" Multiplicity="*" />
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanThink">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Think" Role="Think" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanReady">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Ready" Role="Ready" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanJudge">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Judge" Role="Judge" Multiplicity="*" />
+        </Association>
+        <Association Name="PointMethod">
+          <End Type="JiaoxueJihua.Point" Role="Point" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Method" Role="Method" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanPoint">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Point" Role="Point" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanCharacter">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Character" Role="Character" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanTarget">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Target" Role="Target" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanActive">
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
+        </Association>
+        <Association Name="ActiveActive">
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Active1" Multiplicity="*" />
+        </Association>
+        <Association Name="UserInfoPlan">
+          <End Type="JiaoxueJihua.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JiaoxueJihuaStoreContainer" CdmEntityContainer="JiaoxueJihuaContainer">
+    <EntitySetMapping Name="PlanSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Plan)">
+        <MappingFragment StoreEntitySet="PlanSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Organiser" ColumnName="Organiser" />
+          <ScalarProperty Name="Refer" ColumnName="Refer" />
+          <ScalarProperty Name="Public" ColumnName="Public" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThinkSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Think)">
+        <MappingFragment StoreEntitySet="ThinkSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JudgeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Judge)">
+        <MappingFragment StoreEntitySet="JudgeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReadySet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Ready)">
+        <MappingFragment StoreEntitySet="ReadySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TargetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Target)">
+        <MappingFragment StoreEntitySet="TargetSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Baseic" ColumnName="Baseic" />
+          <ScalarProperty Name="Advance" ColumnName="Advance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActiveSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Active)">
+        <MappingFragment StoreEntitySet="ActiveSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharacterSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Character)">
+        <MappingFragment StoreEntitySet="CharacterSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Point)">
+        <MappingFragment StoreEntitySet="PointSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MethodSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Method)">
+        <MappingFragment StoreEntitySet="MethodSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StepSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Step)">
+        <MappingFragment StoreEntitySet="StepSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Subject)">
+        <MappingFragment StoreEntitySet="SubjectSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Content)">
+        <MappingFragment StoreEntitySet="ContentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhaseSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Phase)">
+        <MappingFragment StoreEntitySet="PhaseSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.UserInfo)">
+        <MappingFragment StoreEntitySet="UserInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GradeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Grade)">
+        <MappingFragment StoreEntitySet="GradeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TextbookSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Textbook)">
+        <MappingFragment StoreEntitySet="TextbookSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ContentHuodong" TypeName="JiaoxueJihua.ContentHuodong" StoreEntitySet="ContentHuodong">
+      <EndProperty Name="Content">
+        <ScalarProperty Name="Id" ColumnName="Content_Id" />
+      </EndProperty>
+      <EndProperty Name="Huodong">
+        <ScalarProperty Name="Id" ColumnName="Huodong_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubjectHuodong" TypeName="JiaoxueJihua.SubjectHuodong" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Huodong">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StepHuodong" TypeName="JiaoxueJihua.StepHuodong" StoreEntitySet="StepHuodong">
+      <EndProperty Name="Step">
+        <ScalarProperty Name="Id" ColumnName="Step_Id" />
+      </EndProperty>
+      <EndProperty Name="Huodong">
+        <ScalarProperty Name="Id" ColumnName="Huodong_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubjectFangan" TypeName="JiaoxueJihua.SubjectFangan" StoreEntitySet="PlanSet">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Fangan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GradeFangan" TypeName="JiaoxueJihua.GradeFangan" StoreEntitySet="PlanSet">
+      <EndProperty Name="Grade">
+        <ScalarProperty Name="Id" ColumnName="Grade_Id" />
+      </EndProperty>
+      <EndProperty Name="Fangan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TextbookFangan" TypeName="JiaoxueJihua.TextbookFangan" StoreEntitySet="PlanSet">
+      <EndProperty Name="Textbook">
+        <ScalarProperty Name="Id" ColumnName="Textbook_Id" />
+      </EndProperty>
+      <EndProperty Name="Fangan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PhaseActive" TypeName="JiaoxueJihua.PhaseActive" StoreEntitySet="PhaseActive">
+      <EndProperty Name="Phase">
+        <ScalarProperty Name="Id" ColumnName="Phase_Id" />
+      </EndProperty>
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="Active_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanThink" TypeName="JiaoxueJihua.PlanThink" StoreEntitySet="ThinkSet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Think">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanReady" TypeName="JiaoxueJihua.PlanReady" StoreEntitySet="ReadySet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Ready">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanJudge" TypeName="JiaoxueJihua.PlanJudge" StoreEntitySet="JudgeSet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Judge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PointMethod" TypeName="JiaoxueJihua.PointMethod" StoreEntitySet="MethodSet">
+      <EndProperty Name="Point">
+        <ScalarProperty Name="Id" ColumnName="Point_Id" />
+      </EndProperty>
+      <EndProperty Name="Method">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanPoint" TypeName="JiaoxueJihua.PlanPoint" StoreEntitySet="PointSet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Point">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanCharacter" TypeName="JiaoxueJihua.PlanCharacter" StoreEntitySet="CharacterSet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Character">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanTarget" TypeName="JiaoxueJihua.PlanTarget" StoreEntitySet="TargetSet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Target">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanActive" TypeName="JiaoxueJihua.PlanActive" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Plan_Id" />
+      </EndProperty>
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ActiveActive" TypeName="JiaoxueJihua.ActiveActive" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="ParentActive_Id" />
+      </EndProperty>
+      <EndProperty Name="Active1">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserInfoPlan" TypeName="JiaoxueJihua.UserInfoPlan" StoreEntitySet="PlanSet">
+      <EndProperty Name="UserInfo">
+        <ScalarProperty Name="Id" ColumnName="UserInfo_Id" />
+      </EndProperty>
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="JiaoxueJihua" ZoomLevel="81" >
+        <EntityTypeShape EntityType="JiaoxueJihua.Plan" Width="1.5" PointX="8" PointY="1.875" Height="4.6443082682291656" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Think" Width="1.5" PointX="12.5" PointY="5.875" Height="1.5879931640624996" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Judge" Width="1.5" PointX="12.5" PointY="0.75" Height="1.5879931640625" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Ready" Width="1.5" PointX="14.5" PointY="2.625" Height="1.5879931640625" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Target" Width="1.5" PointX="7.75" PointY="8.75" Height="1.9700325520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Active" Width="1.5" PointX="3.5" PointY="1.125" Height="2.3520719401041661" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Character" Width="1.5" PointX="5.5" PointY="7.375" Height="1.5879931640624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Point" Width="1.5" PointX="10" PointY="8.75" Height="1.9700325520833331" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Method" Width="1.5" PointX="9.875" PointY="11.5" Height="1.5879931640625" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Step" Width="1.5" PointX="2.75" PointY="4.5" Height="1.3969734700520839" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Subject" Width="1.5" PointX="4.75" PointY="4.625" Height="1.7790128580729157" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Content" Width="1.5" PointX="0.875" PointY="4.5" Height="1.3969734700520835" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Phase" Width="1.5" PointX="0.625" PointY="0.625" Height="1.3969734700520835" />
+        <AssociationConnector Association="JiaoxueJihua.ContentHuodong">
+          <ConnectorPoint PointX="2.28125" PointY="4.5" />
+          <ConnectorPoint PointX="2.28125" PointY="2.780772705078125" />
+          <ConnectorPoint PointX="3.5" PointY="2.780772705078125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.SubjectHuodong">
+          <ConnectorPoint PointX="5.3750025" PointY="4.625" />
+          <ConnectorPoint PointX="5.3750025" PointY="3.0512397843424486" />
+          <ConnectorPoint PointX="5" PointY="3.0512397843424486" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.StepHuodong">
+          <ConnectorPoint PointX="3.875" PointY="4.5" />
+          <ConnectorPoint PointX="3.875" PointY="3.4770719401041661" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="JiaoxueJihua.UserInfo" Width="1.5" PointX="5.75" PointY="0.5" Height="1.779012858072917" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Grade" Width="1.5" PointX="12.5" PointY="4.125" Height="1.5879931640624996" />
+        <AssociationConnector Association="JiaoxueJihua.SubjectFangan">
+          <ConnectorPoint PointX="6.25" PointY="5.5145064290364578" />
+          <ConnectorPoint PointX="8" PointY="5.5145064290364578" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.GradeFangan">
+          <ConnectorPoint PointX="12.5" PointY="4.7099307187398276" />
+          <ConnectorPoint PointX="12.364583333333334" PointY="4.7099307187398267" />
+          <ConnectorPoint PointX="12.197916666666666" PointY="4.7099307187398276" />
+          <ConnectorPoint PointX="9.5" PointY="4.7099307187398276" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="JiaoxueJihua.Textbook" Width="1.5" PointX="12.125" PointY="7.625" Height="1.5879931640624996" />
+        <AssociationConnector Association="JiaoxueJihua.TextbookFangan">
+          <ConnectorPoint PointX="12.28125" PointY="7.625" />
+          <ConnectorPoint PointX="12.28125" PointY="3.6267655241128507" />
+          <ConnectorPoint PointX="9.5" PointY="3.6267655241128507" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PhaseActive">
+          <ConnectorPoint PointX="2.125" PointY="1.5734867350260418" />
+          <ConnectorPoint PointX="3.5" PointY="1.5734867350260418" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanThink">
+          <ConnectorPoint PointX="9.5" PointY="6.1971541341145828" />
+          <ConnectorPoint PointX="10.666666666666666" PointY="6.1971541341145819" />
+          <ConnectorPoint PointX="10.833333333333334" PointY="6.1971541341145828" />
+          <ConnectorPoint PointX="12.197916666666666" PointY="6.1971541341145819" />
+          <ConnectorPoint PointX="12.364583333333334" PointY="6.1971541341145828" />
+          <ConnectorPoint PointX="12.5" PointY="6.1971541341145828" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanReady">
+          <ConnectorPoint PointX="9.5" PointY="3.0633827620564253" />
+          <ConnectorPoint PointX="14.5" PointY="3.0633827620564253" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanJudge">
+          <ConnectorPoint PointX="9.5" PointY="2.10649658203125" />
+          <ConnectorPoint PointX="12.5" PointY="2.10649658203125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PointMethod">
+          <ConnectorPoint PointX="10.6875" PointY="10.720032552083334" />
+          <ConnectorPoint PointX="10.6875" PointY="11.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanPoint">
+          <ConnectorPoint PointX="9.5" PointY="5.4535424264272052" />
+          <ConnectorPoint PointX="10.75" PointY="5.4535424264272052" />
+          <ConnectorPoint PointX="10.75" PointY="8.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanCharacter">
+          <ConnectorPoint PointX="9.40625" PointY="6.5193082682291656" />
+          <ConnectorPoint PointX="9.40625" PointY="8.03125" />
+          <ConnectorPoint PointX="8.7083333333333339" PointY="8.03125" />
+          <ConnectorPoint PointX="8.5416666666666661" PointY="8.03125" />
+          <ConnectorPoint PointX="7" PointY="8.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanTarget">
+          <ConnectorPoint PointX="8.625" PointY="6.5193082682291656" />
+          <ConnectorPoint PointX="8.625" PointY="8.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PlanActive">
+          <ConnectorPoint PointX="8" PointY="2.7591639957409297" />
+          <ConnectorPoint PointX="5" PointY="2.7591639957409297" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.ActiveActive">
+          <ConnectorPoint PointX="4.0319230769230767" PointY="1.125" />
+          <ConnectorPoint PointX="4.0319230769230767" PointY="0.875" />
+          <ConnectorPoint PointX="4.4784615384615378" PointY="0.875" />
+          <ConnectorPoint PointX="4.4784615384615378" PointY="1.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.UserInfoPlan">
+          <ConnectorPoint PointX="7.25" PointY="2.0770064290364587" />
+          <ConnectorPoint PointX="8" PointY="2.0770064290364587" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
