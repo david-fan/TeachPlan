@@ -137,6 +137,12 @@ namespace TeachPlan
             get { return _textbookSet  ?? (_textbookSet = CreateObjectSet<Textbook>("TextbookSet")); }
         }
         private ObjectSet<Textbook> _textbookSet;
+    
+        public ObjectSet<Form> FormSet
+        {
+            get { return _formSet  ?? (_formSet = CreateObjectSet<Form>("FormSet")); }
+        }
+        private ObjectSet<Form> _formSet;
 
         #endregion
     }

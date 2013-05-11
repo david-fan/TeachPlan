@@ -22,33 +22,7 @@
     <EntitySet Name="UserInfoSet" EntityType="JiaoxueJihua.Store.UserInfoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GradeSet" EntityType="JiaoxueJihua.Store.GradeSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TextbookSet" EntityType="JiaoxueJihua.Store.TextbookSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ContentHuodong" EntityType="JiaoxueJihua.Store.ContentHuodong" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="StepHuodong" EntityType="JiaoxueJihua.Store.StepHuodong" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PhaseActive" EntityType="JiaoxueJihua.Store.PhaseActive" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_ContentHuodong_Content" Association="JiaoxueJihua.Store.FK_ContentHuodong_Content">
-      <End Role="Content" EntitySet="ContentSet" />
-      <End Role="ContentHuodong" EntitySet="ContentHuodong" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ContentHuodong_Huodong" Association="JiaoxueJihua.Store.FK_ContentHuodong_Huodong">
-      <End Role="Huodong" EntitySet="ActiveSet" />
-      <End Role="ContentHuodong" EntitySet="ContentHuodong" />
-    </AssociationSet>
-    <AssociationSet Name="SubjectHuodong" Association="JiaoxueJihua.Store.SubjectHuodong">
-      <End Role="Subject" EntitySet="SubjectSet" />
-      <End Role="Huodong" EntitySet="ActiveSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StepHuodong_Step" Association="JiaoxueJihua.Store.FK_StepHuodong_Step">
-      <End Role="Step" EntitySet="StepSet" />
-      <End Role="StepHuodong" EntitySet="StepHuodong" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StepHuodong_Huodong" Association="JiaoxueJihua.Store.FK_StepHuodong_Huodong">
-      <End Role="Huodong" EntitySet="ActiveSet" />
-      <End Role="StepHuodong" EntitySet="StepHuodong" />
-    </AssociationSet>
-    <AssociationSet Name="SubjectFangan" Association="JiaoxueJihua.Store.SubjectFangan">
-      <End Role="Subject" EntitySet="SubjectSet" />
-      <End Role="Fangan" EntitySet="PlanSet" />
-    </AssociationSet>
+    <EntitySet Name="FormSet" EntityType="JiaoxueJihua.Store.FormSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="GradeFangan" Association="JiaoxueJihua.Store.GradeFangan">
       <End Role="Grade" EntitySet="GradeSet" />
       <End Role="Fangan" EntitySet="PlanSet" />
@@ -56,14 +30,6 @@
     <AssociationSet Name="TextbookFangan" Association="JiaoxueJihua.Store.TextbookFangan">
       <End Role="Textbook" EntitySet="TextbookSet" />
       <End Role="Fangan" EntitySet="PlanSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PhaseActive_Phase" Association="JiaoxueJihua.Store.FK_PhaseActive_Phase">
-      <End Role="Phase" EntitySet="PhaseSet" />
-      <End Role="PhaseActive" EntitySet="PhaseActive" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PhaseActive_Active" Association="JiaoxueJihua.Store.FK_PhaseActive_Active">
-      <End Role="Active" EntitySet="ActiveSet" />
-      <End Role="PhaseActive" EntitySet="PhaseActive" />
     </AssociationSet>
     <AssociationSet Name="PlanThink" Association="JiaoxueJihua.Store.PlanThink">
       <End Role="Plan" EntitySet="PlanSet" />
@@ -97,13 +63,33 @@
       <End Role="Plan" EntitySet="PlanSet" />
       <End Role="Active" EntitySet="ActiveSet" />
     </AssociationSet>
-    <AssociationSet Name="ActiveActive" Association="JiaoxueJihua.Store.ActiveActive">
-      <End Role="Active" EntitySet="ActiveSet" />
-      <End Role="Active1" EntitySet="ActiveSet" />
-    </AssociationSet>
     <AssociationSet Name="UserInfoPlan" Association="JiaoxueJihua.Store.UserInfoPlan">
       <End Role="UserInfo" EntitySet="UserInfoSet" />
       <End Role="Plan" EntitySet="PlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectPlan" Association="JiaoxueJihua.Store.SubjectPlan">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="Plan" EntitySet="PlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectActive" Association="JiaoxueJihua.Store.SubjectActive">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="Active" EntitySet="ActiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="ActiveStep" Association="JiaoxueJihua.Store.ActiveStep">
+      <End Role="Active" EntitySet="ActiveSet" />
+      <End Role="Step" EntitySet="StepSet" />
+    </AssociationSet>
+    <AssociationSet Name="ContentActive" Association="JiaoxueJihua.Store.ContentActive">
+      <End Role="Content" EntitySet="ContentSet" />
+      <End Role="Active" EntitySet="ActiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="PhaseActive" Association="JiaoxueJihua.Store.PhaseActive">
+      <End Role="Phase" EntitySet="PhaseSet" />
+      <End Role="Active" EntitySet="ActiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="FormActive" Association="JiaoxueJihua.Store.FormActive">
+      <End Role="Form" EntitySet="FormSet" />
+      <End Role="Active" EntitySet="ActiveSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="PlanSet">
@@ -118,10 +104,10 @@
     <Property Name="Refer" Type="int" Nullable="false" />
     <Property Name="Public" Type="bit" Nullable="false" />
     <Property Name="ClassName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Subject_Id" Type="int" Nullable="false" />
     <Property Name="Grade_Id" Type="int" Nullable="false" />
     <Property Name="Textbook_Id" Type="int" Nullable="false" />
     <Property Name="UserInfo_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ThinkSet">
     <Key>
@@ -163,9 +149,11 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Subject_Id" Type="int" Nullable="false" />
     <Property Name="Plan_Id" Type="int" Nullable="false" />
-    <Property Name="ParentActive_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+    <Property Name="Content_Id" Type="int" Nullable="false" />
+    <Property Name="Phase_Id" Type="int" Nullable="false" />
+    <Property Name="Form_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CharacterSet">
     <Key>
@@ -197,6 +185,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Active_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SubjectSet">
     <Key>
@@ -210,12 +201,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PhaseSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserInfoSet">
     <Key>
@@ -239,54 +232,13 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="ContentHuodong">
+  <EntityType Name="FormSet">
     <Key>
-      <PropertyRef Name="Content_Id" />
-      <PropertyRef Name="Huodong_Id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Content_Id" Type="int" Nullable="false" />
-    <Property Name="Huodong_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="StepHuodong">
-    <Key>
-      <PropertyRef Name="Step_Id" />
-      <PropertyRef Name="Huodong_Id" />
-    </Key>
-    <Property Name="Step_Id" Type="int" Nullable="false" />
-    <Property Name="Huodong_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PhaseActive">
-    <Key>
-      <PropertyRef Name="Phase_Id" />
-      <PropertyRef Name="Active_Id" />
-    </Key>
-    <Property Name="Phase_Id" Type="int" Nullable="false" />
-    <Property Name="Active_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="SubjectHuodong">
-    <End Role="Subject" Type="JiaoxueJihua.Store.SubjectSet" Multiplicity="1" />
-    <End Role="Huodong" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Huodong">
-        <PropertyRef Name="Subject_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SubjectFangan">
-    <End Role="Subject" Type="JiaoxueJihua.Store.SubjectSet" Multiplicity="1" />
-    <End Role="Fangan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Fangan">
-        <PropertyRef Name="Subject_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="GradeFangan">
     <End Role="Grade" Type="JiaoxueJihua.Store.GradeSet" Multiplicity="1" />
     <End Role="Fangan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
@@ -407,18 +359,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ActiveActive">
-    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
-    <End Role="Active1" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Active">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Active1">
-        <PropertyRef Name="ParentActive_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="UserInfoPlan">
     <End Role="UserInfo" Type="JiaoxueJihua.Store.UserInfoSet" Multiplicity="1" />
     <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
@@ -431,75 +371,75 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ContentHuodong_Content">
-    <End Role="Content" Type="JiaoxueJihua.Store.ContentSet" Multiplicity="1" />
-    <End Role="ContentHuodong" Type="JiaoxueJihua.Store.ContentHuodong" Multiplicity="*" />
+  <Association Name="SubjectPlan">
+    <End Role="Subject" Type="JiaoxueJihua.Store.SubjectSet" Multiplicity="1" />
+    <End Role="Plan" Type="JiaoxueJihua.Store.PlanSet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Content">
+      <Principal Role="Subject">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ContentHuodong">
-        <PropertyRef Name="Content_Id" />
+      <Dependent Role="Plan">
+        <PropertyRef Name="Subject_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ContentHuodong_Huodong">
-    <End Role="ContentHuodong" Type="JiaoxueJihua.Store.ContentHuodong" Multiplicity="*" />
-    <End Role="Huodong" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
+  <Association Name="SubjectActive">
+    <End Role="Subject" Type="JiaoxueJihua.Store.SubjectSet" Multiplicity="1" />
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Huodong">
+      <Principal Role="Subject">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ContentHuodong">
-        <PropertyRef Name="Huodong_Id" />
+      <Dependent Role="Active">
+        <PropertyRef Name="Subject_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StepHuodong_Step">
-    <End Role="Step" Type="JiaoxueJihua.Store.StepSet" Multiplicity="1" />
-    <End Role="StepHuodong" Type="JiaoxueJihua.Store.StepHuodong" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Step">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="StepHuodong">
-        <PropertyRef Name="Step_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StepHuodong_Huodong">
-    <End Role="StepHuodong" Type="JiaoxueJihua.Store.StepHuodong" Multiplicity="*" />
-    <End Role="Huodong" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Huodong">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="StepHuodong">
-        <PropertyRef Name="Huodong_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PhaseActive_Phase">
-    <End Role="Phase" Type="JiaoxueJihua.Store.PhaseSet" Multiplicity="1" />
-    <End Role="PhaseActive" Type="JiaoxueJihua.Store.PhaseActive" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Phase">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PhaseActive">
-        <PropertyRef Name="Phase_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PhaseActive_Active">
-    <End Role="PhaseActive" Type="JiaoxueJihua.Store.PhaseActive" Multiplicity="*" />
+  <Association Name="ActiveStep">
     <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="1" />
+    <End Role="Step" Type="JiaoxueJihua.Store.StepSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Active">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="PhaseActive">
+      <Dependent Role="Step">
         <PropertyRef Name="Active_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContentActive">
+    <End Role="Content" Type="JiaoxueJihua.Store.ContentSet" Multiplicity="1" />
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active">
+        <PropertyRef Name="Content_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PhaseActive">
+    <End Role="Phase" Type="JiaoxueJihua.Store.PhaseSet" Multiplicity="1" />
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phase">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active">
+        <PropertyRef Name="Phase_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormActive">
+    <End Role="Form" Type="JiaoxueJihua.Store.FormSet" Multiplicity="1" />
+    <End Role="Active" Type="JiaoxueJihua.Store.ActiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active">
+        <PropertyRef Name="Form_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -521,24 +461,8 @@
           <EntitySet Name="SubjectSet" EntityType="JiaoxueJihua.Subject" />
           <EntitySet Name="ContentSet" EntityType="JiaoxueJihua.Content" />
           <EntitySet Name="PhaseSet" EntityType="JiaoxueJihua.Phase" />
-          <AssociationSet Name="ContentHuodong" Association="JiaoxueJihua.ContentHuodong">
-            <End Role="Content" EntitySet="ContentSet" />
-            <End Role="Huodong" EntitySet="ActiveSet" />
-          </AssociationSet>
-          <AssociationSet Name="SubjectHuodong" Association="JiaoxueJihua.SubjectHuodong">
-            <End Role="Subject" EntitySet="SubjectSet" />
-            <End Role="Huodong" EntitySet="ActiveSet" />
-          </AssociationSet>
-          <AssociationSet Name="StepHuodong" Association="JiaoxueJihua.StepHuodong">
-            <End Role="Step" EntitySet="StepSet" />
-            <End Role="Huodong" EntitySet="ActiveSet" />
-          </AssociationSet>
           <EntitySet Name="UserInfoSet" EntityType="JiaoxueJihua.UserInfo" />
           <EntitySet Name="GradeSet" EntityType="JiaoxueJihua.Grade" />
-          <AssociationSet Name="SubjectFangan" Association="JiaoxueJihua.SubjectFangan">
-            <End Role="Subject" EntitySet="SubjectSet" />
-            <End Role="Fangan" EntitySet="PlanSet" />
-          </AssociationSet>
           <AssociationSet Name="GradeFangan" Association="JiaoxueJihua.GradeFangan">
             <End Role="Grade" EntitySet="GradeSet" />
             <End Role="Fangan" EntitySet="PlanSet" />
@@ -547,10 +471,6 @@
           <AssociationSet Name="TextbookFangan" Association="JiaoxueJihua.TextbookFangan">
             <End Role="Textbook" EntitySet="TextbookSet" />
             <End Role="Fangan" EntitySet="PlanSet" />
-          </AssociationSet>
-          <AssociationSet Name="PhaseActive" Association="JiaoxueJihua.PhaseActive">
-            <End Role="Phase" EntitySet="PhaseSet" />
-            <End Role="Active" EntitySet="ActiveSet" />
           </AssociationSet>
           <AssociationSet Name="PlanThink" Association="JiaoxueJihua.PlanThink">
             <End Role="Plan" EntitySet="PlanSet" />
@@ -584,13 +504,34 @@
             <End Role="Plan" EntitySet="PlanSet" />
             <End Role="Active" EntitySet="ActiveSet" />
           </AssociationSet>
-          <AssociationSet Name="ActiveActive" Association="JiaoxueJihua.ActiveActive">
-            <End Role="Active" EntitySet="ActiveSet" />
-            <End Role="Active1" EntitySet="ActiveSet" />
-          </AssociationSet>
           <AssociationSet Name="UserInfoPlan" Association="JiaoxueJihua.UserInfoPlan">
             <End Role="UserInfo" EntitySet="UserInfoSet" />
             <End Role="Plan" EntitySet="PlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectPlan" Association="JiaoxueJihua.SubjectPlan">
+            <End Role="Subject" EntitySet="SubjectSet" />
+            <End Role="Plan" EntitySet="PlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectActive" Association="JiaoxueJihua.SubjectActive">
+            <End Role="Subject" EntitySet="SubjectSet" />
+            <End Role="Active" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="ActiveStep" Association="JiaoxueJihua.ActiveStep">
+            <End Role="Active" EntitySet="ActiveSet" />
+            <End Role="Step" EntitySet="StepSet" />
+          </AssociationSet>
+          <AssociationSet Name="ContentActive" Association="JiaoxueJihua.ContentActive">
+            <End Role="Content" EntitySet="ContentSet" />
+            <End Role="Active" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="PhaseActive" Association="JiaoxueJihua.PhaseActive">
+            <End Role="Phase" EntitySet="PhaseSet" />
+            <End Role="Active" EntitySet="ActiveSet" />
+          </AssociationSet>
+          <EntitySet Name="FormSet" EntityType="JiaoxueJihua.Form" />
+          <AssociationSet Name="FormActive" Association="JiaoxueJihua.FormActive">
+            <End Role="Form" EntitySet="FormSet" />
+            <End Role="Active" EntitySet="ActiveSet" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Plan">
@@ -599,7 +540,6 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Desc" Nullable="false" />
-          <NavigationProperty Name="Subject" Relationship="JiaoxueJihua.SubjectFangan" FromRole="Fangan" ToRole="Subject" />
           <NavigationProperty Name="Grade" Relationship="JiaoxueJihua.GradeFangan" FromRole="Fangan" ToRole="Grade" />
           <NavigationProperty Name="Textbook" Relationship="JiaoxueJihua.TextbookFangan" FromRole="Fangan" ToRole="Textbook" />
           <Property Type="String" Name="Name" Nullable="false" />
@@ -616,6 +556,7 @@
           <NavigationProperty Name="Active" Relationship="JiaoxueJihua.PlanActive" FromRole="Plan" ToRole="Active" />
           <Property Type="String" Name="ClassName" Nullable="false" />
           <NavigationProperty Name="UserInfo" Relationship="JiaoxueJihua.UserInfoPlan" FromRole="Plan" ToRole="UserInfo" />
+          <NavigationProperty Name="Subject" Relationship="JiaoxueJihua.SubjectPlan" FromRole="Plan" ToRole="Subject" />
         </EntityType>
         <EntityType Name="Think">
           <Key>
@@ -657,13 +598,12 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" />
-          <NavigationProperty Name="Content" Relationship="JiaoxueJihua.ContentHuodong" FromRole="Huodong" ToRole="Content" />
-          <NavigationProperty Name="Subject" Relationship="JiaoxueJihua.SubjectHuodong" FromRole="Huodong" ToRole="Subject" />
-          <NavigationProperty Name="Step" Relationship="JiaoxueJihua.StepHuodong" FromRole="Huodong" ToRole="Step" />
-          <NavigationProperty Name="Phase" Relationship="JiaoxueJihua.PhaseActive" FromRole="Active" ToRole="Phase" />
           <NavigationProperty Name="Plan" Relationship="JiaoxueJihua.PlanActive" FromRole="Active" ToRole="Plan" />
-          <NavigationProperty Name="ChildActives" Relationship="JiaoxueJihua.ActiveActive" FromRole="Active" ToRole="Active1" />
-          <NavigationProperty Name="ParentActive" Relationship="JiaoxueJihua.ActiveActive" FromRole="Active1" ToRole="Active" />
+          <NavigationProperty Name="Subject" Relationship="JiaoxueJihua.SubjectActive" FromRole="Active" ToRole="Subject" />
+          <NavigationProperty Name="Steps" Relationship="JiaoxueJihua.ActiveStep" FromRole="Active" ToRole="Step" />
+          <NavigationProperty Name="Content" Relationship="JiaoxueJihua.ContentActive" FromRole="Active" ToRole="Content" />
+          <NavigationProperty Name="Phase" Relationship="JiaoxueJihua.PhaseActive" FromRole="Active" ToRole="Phase" />
+          <NavigationProperty Name="Form" Relationship="JiaoxueJihua.FormActive" FromRole="Active" ToRole="Form" />
         </EntityType>
         <EntityType Name="Character">
           <Key>
@@ -696,43 +636,35 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Huodong" Relationship="JiaoxueJihua.StepHuodong" FromRole="Step" ToRole="Huodong" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <NavigationProperty Name="Active" Relationship="JiaoxueJihua.ActiveStep" FromRole="Step" ToRole="Active" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Huodong" Relationship="JiaoxueJihua.SubjectHuodong" FromRole="Subject" ToRole="Huodong" />
-          <NavigationProperty Name="Fangan" Relationship="JiaoxueJihua.SubjectFangan" FromRole="Subject" ToRole="Fangan" />
           <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Plans" Relationship="JiaoxueJihua.SubjectPlan" FromRole="Subject" ToRole="Plan" />
+          <NavigationProperty Name="Actives" Relationship="JiaoxueJihua.SubjectActive" FromRole="Subject" ToRole="Active" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Huodong" Relationship="JiaoxueJihua.ContentHuodong" FromRole="Content" ToRole="Huodong" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Actives" Relationship="JiaoxueJihua.ContentActive" FromRole="Content" ToRole="Active" />
         </EntityType>
         <EntityType Name="Phase">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Active" Relationship="JiaoxueJihua.PhaseActive" FromRole="Phase" ToRole="Active" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Actives" Relationship="JiaoxueJihua.PhaseActive" FromRole="Phase" ToRole="Active" />
         </EntityType>
-        <Association Name="ContentHuodong">
-          <End Type="JiaoxueJihua.Content" Role="Content" Multiplicity="*" />
-          <End Type="JiaoxueJihua.Active" Role="Huodong" Multiplicity="*" />
-        </Association>
-        <Association Name="SubjectHuodong">
-          <End Type="JiaoxueJihua.Subject" Role="Subject" Multiplicity="1" />
-          <End Type="JiaoxueJihua.Active" Role="Huodong" Multiplicity="*" />
-        </Association>
-        <Association Name="StepHuodong">
-          <End Type="JiaoxueJihua.Step" Role="Step" Multiplicity="*" />
-          <End Type="JiaoxueJihua.Active" Role="Huodong" Multiplicity="*" />
-        </Association>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -750,10 +682,6 @@
           <NavigationProperty Name="Fangan" Relationship="JiaoxueJihua.GradeFangan" FromRole="Grade" ToRole="Fangan" />
           <Property Type="String" Name="Name" Nullable="false" />
         </EntityType>
-        <Association Name="SubjectFangan">
-          <End Type="JiaoxueJihua.Subject" Role="Subject" Multiplicity="1" />
-          <End Type="JiaoxueJihua.Plan" Role="Fangan" Multiplicity="*" />
-        </Association>
         <Association Name="GradeFangan">
           <End Type="JiaoxueJihua.Grade" Role="Grade" Multiplicity="1" />
           <End Type="JiaoxueJihua.Plan" Role="Fangan" Multiplicity="*" />
@@ -769,10 +697,6 @@
         <Association Name="TextbookFangan">
           <End Type="JiaoxueJihua.Textbook" Role="Textbook" Multiplicity="1" />
           <End Type="JiaoxueJihua.Plan" Role="Fangan" Multiplicity="*" />
-        </Association>
-        <Association Name="PhaseActive">
-          <End Type="JiaoxueJihua.Phase" Role="Phase" Multiplicity="*" />
-          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
         </Association>
         <Association Name="PlanThink">
           <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
@@ -806,13 +730,41 @@
           <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="1" />
           <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
         </Association>
-        <Association Name="ActiveActive">
-          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="1" />
-          <End Type="JiaoxueJihua.Active" Role="Active1" Multiplicity="*" />
-        </Association>
         <Association Name="UserInfoPlan">
           <End Type="JiaoxueJihua.UserInfo" Role="UserInfo" Multiplicity="1" />
           <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="*" />
+        </Association>
+        <Association Name="SubjectPlan">
+          <End Type="JiaoxueJihua.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Plan" Role="Plan" Multiplicity="*" />
+        </Association>
+        <Association Name="SubjectActive">
+          <End Type="JiaoxueJihua.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
+        </Association>
+        <Association Name="ActiveStep">
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Step" Role="Step" Multiplicity="*" />
+        </Association>
+        <Association Name="ContentActive">
+          <End Type="JiaoxueJihua.Content" Role="Content" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
+        </Association>
+        <Association Name="PhaseActive">
+          <End Type="JiaoxueJihua.Phase" Role="Phase" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Active" Relationship="JiaoxueJihua.FormActive" FromRole="Form" ToRole="Active" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <Association Name="FormActive">
+          <End Type="JiaoxueJihua.Form" Role="Form" Multiplicity="1" />
+          <End Type="JiaoxueJihua.Active" Role="Active" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -905,6 +857,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Step)">
         <MappingFragment StoreEntitySet="StepSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -920,6 +874,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Content)">
         <MappingFragment StoreEntitySet="ContentSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -927,6 +882,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Phase)">
         <MappingFragment StoreEntitySet="PhaseSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -955,38 +911,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ContentHuodong" TypeName="JiaoxueJihua.ContentHuodong" StoreEntitySet="ContentHuodong">
-      <EndProperty Name="Content">
-        <ScalarProperty Name="Id" ColumnName="Content_Id" />
-      </EndProperty>
-      <EndProperty Name="Huodong">
-        <ScalarProperty Name="Id" ColumnName="Huodong_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="SubjectHuodong" TypeName="JiaoxueJihua.SubjectHuodong" StoreEntitySet="ActiveSet">
-      <EndProperty Name="Subject">
-        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
-      </EndProperty>
-      <EndProperty Name="Huodong">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="StepHuodong" TypeName="JiaoxueJihua.StepHuodong" StoreEntitySet="StepHuodong">
-      <EndProperty Name="Step">
-        <ScalarProperty Name="Id" ColumnName="Step_Id" />
-      </EndProperty>
-      <EndProperty Name="Huodong">
-        <ScalarProperty Name="Id" ColumnName="Huodong_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="SubjectFangan" TypeName="JiaoxueJihua.SubjectFangan" StoreEntitySet="PlanSet">
-      <EndProperty Name="Subject">
-        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
-      </EndProperty>
-      <EndProperty Name="Fangan">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="FormSet">
+      <EntityTypeMapping TypeName="IsTypeOf(JiaoxueJihua.Form)">
+        <MappingFragment StoreEntitySet="FormSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GradeFangan" TypeName="JiaoxueJihua.GradeFangan" StoreEntitySet="PlanSet">
       <EndProperty Name="Grade">
         <ScalarProperty Name="Id" ColumnName="Grade_Id" />
@@ -1001,14 +933,6 @@
       </EndProperty>
       <EndProperty Name="Fangan">
         <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="PhaseActive" TypeName="JiaoxueJihua.PhaseActive" StoreEntitySet="PhaseActive">
-      <EndProperty Name="Phase">
-        <ScalarProperty Name="Id" ColumnName="Phase_Id" />
-      </EndProperty>
-      <EndProperty Name="Active">
-        <ScalarProperty Name="Id" ColumnName="Active_Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="PlanThink" TypeName="JiaoxueJihua.PlanThink" StoreEntitySet="ThinkSet">
@@ -1075,19 +999,59 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ActiveActive" TypeName="JiaoxueJihua.ActiveActive" StoreEntitySet="ActiveSet">
-      <EndProperty Name="Active">
-        <ScalarProperty Name="Id" ColumnName="ParentActive_Id" />
-      </EndProperty>
-      <EndProperty Name="Active1">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="UserInfoPlan" TypeName="JiaoxueJihua.UserInfoPlan" StoreEntitySet="PlanSet">
       <EndProperty Name="UserInfo">
         <ScalarProperty Name="Id" ColumnName="UserInfo_Id" />
       </EndProperty>
       <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubjectPlan" TypeName="JiaoxueJihua.SubjectPlan" StoreEntitySet="PlanSet">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubjectActive" TypeName="JiaoxueJihua.SubjectActive" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ActiveStep" TypeName="JiaoxueJihua.ActiveStep" StoreEntitySet="StepSet">
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="Active_Id" />
+      </EndProperty>
+      <EndProperty Name="Step">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContentActive" TypeName="JiaoxueJihua.ContentActive" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Content">
+        <ScalarProperty Name="Id" ColumnName="Content_Id" />
+      </EndProperty>
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PhaseActive" TypeName="JiaoxueJihua.PhaseActive" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Phase">
+        <ScalarProperty Name="Id" ColumnName="Phase_Id" />
+      </EndProperty>
+      <EndProperty Name="Active">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FormActive" TypeName="JiaoxueJihua.FormActive" StoreEntitySet="ActiveSet">
+      <EndProperty Name="Form">
+        <ScalarProperty Name="Id" ColumnName="Form_Id" />
+      </EndProperty>
+      <EndProperty Name="Active">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
@@ -1116,34 +1080,16 @@
         <EntityTypeShape EntityType="JiaoxueJihua.Judge" Width="1.5" PointX="12.5" PointY="0.75" Height="1.5879931640625" />
         <EntityTypeShape EntityType="JiaoxueJihua.Ready" Width="1.5" PointX="14.5" PointY="2.625" Height="1.5879931640625" />
         <EntityTypeShape EntityType="JiaoxueJihua.Target" Width="1.5" PointX="7.75" PointY="8.75" Height="1.9700325520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="JiaoxueJihua.Active" Width="1.5" PointX="3.5" PointY="1.125" Height="2.3520719401041661" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Active" Width="1.5" PointX="3.5" PointY="1.125" Height="2.734111328125" />
         <EntityTypeShape EntityType="JiaoxueJihua.Character" Width="1.5" PointX="5.5" PointY="7.375" Height="1.5879931640624996" IsExpanded="true" />
         <EntityTypeShape EntityType="JiaoxueJihua.Point" Width="1.5" PointX="10" PointY="8.75" Height="1.9700325520833331" />
         <EntityTypeShape EntityType="JiaoxueJihua.Method" Width="1.5" PointX="9.875" PointY="11.5" Height="1.5879931640625" />
-        <EntityTypeShape EntityType="JiaoxueJihua.Step" Width="1.5" PointX="2.75" PointY="4.5" Height="1.3969734700520839" />
-        <EntityTypeShape EntityType="JiaoxueJihua.Subject" Width="1.5" PointX="4.75" PointY="4.625" Height="1.7790128580729157" />
-        <EntityTypeShape EntityType="JiaoxueJihua.Content" Width="1.5" PointX="0.875" PointY="4.5" Height="1.3969734700520835" />
-        <EntityTypeShape EntityType="JiaoxueJihua.Phase" Width="1.5" PointX="0.625" PointY="0.625" Height="1.3969734700520835" />
-        <AssociationConnector Association="JiaoxueJihua.ContentHuodong">
-          <ConnectorPoint PointX="2.28125" PointY="4.5" />
-          <ConnectorPoint PointX="2.28125" PointY="2.780772705078125" />
-          <ConnectorPoint PointX="3.5" PointY="2.780772705078125" />
-        </AssociationConnector>
-        <AssociationConnector Association="JiaoxueJihua.SubjectHuodong">
-          <ConnectorPoint PointX="5.3750025" PointY="4.625" />
-          <ConnectorPoint PointX="5.3750025" PointY="3.0512397843424486" />
-          <ConnectorPoint PointX="5" PointY="3.0512397843424486" />
-        </AssociationConnector>
-        <AssociationConnector Association="JiaoxueJihua.StepHuodong">
-          <ConnectorPoint PointX="3.875" PointY="4.5" />
-          <ConnectorPoint PointX="3.875" PointY="3.4770719401041661" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="JiaoxueJihua.Step" Width="1.5" PointX="3" PointY="4.625" Height="1.7790128580729165" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Subject" Width="1.5" PointX="4.75" PointY="4.625" Height="1.3969734700520826" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Content" Width="1.5" PointX="1.125" PointY="4.75" Height="1.5879931640624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiaoxueJihua.Phase" Width="1.5" PointX="0.625" PointY="0.75" Height="1.5879931640625" />
         <EntityTypeShape EntityType="JiaoxueJihua.UserInfo" Width="1.5" PointX="5.75" PointY="0.5" Height="1.779012858072917" />
         <EntityTypeShape EntityType="JiaoxueJihua.Grade" Width="1.5" PointX="12.5" PointY="4.125" Height="1.5879931640624996" />
-        <AssociationConnector Association="JiaoxueJihua.SubjectFangan">
-          <ConnectorPoint PointX="6.25" PointY="5.5145064290364578" />
-          <ConnectorPoint PointX="8" PointY="5.5145064290364578" />
-        </AssociationConnector>
         <AssociationConnector Association="JiaoxueJihua.GradeFangan">
           <ConnectorPoint PointX="12.5" PointY="4.7099307187398276" />
           <ConnectorPoint PointX="12.364583333333334" PointY="4.7099307187398267" />
@@ -1155,10 +1101,6 @@
           <ConnectorPoint PointX="12.28125" PointY="7.625" />
           <ConnectorPoint PointX="12.28125" PointY="3.6267655241128507" />
           <ConnectorPoint PointX="9.5" PointY="3.6267655241128507" />
-        </AssociationConnector>
-        <AssociationConnector Association="JiaoxueJihua.PhaseActive">
-          <ConnectorPoint PointX="2.125" PointY="1.5734867350260418" />
-          <ConnectorPoint PointX="3.5" PointY="1.5734867350260418" />
         </AssociationConnector>
         <AssociationConnector Association="JiaoxueJihua.PlanThink">
           <ConnectorPoint PointX="9.5" PointY="6.1971541341145828" />
@@ -1197,18 +1139,41 @@
           <ConnectorPoint PointX="8.625" PointY="8.75" />
         </AssociationConnector>
         <AssociationConnector Association="JiaoxueJihua.PlanActive">
-          <ConnectorPoint PointX="8" PointY="2.7591639957409297" />
-          <ConnectorPoint PointX="5" PointY="2.7591639957409297" />
-        </AssociationConnector>
-        <AssociationConnector Association="JiaoxueJihua.ActiveActive">
-          <ConnectorPoint PointX="4.0319230769230767" PointY="1.125" />
-          <ConnectorPoint PointX="4.0319230769230767" PointY="0.875" />
-          <ConnectorPoint PointX="4.4784615384615378" PointY="0.875" />
-          <ConnectorPoint PointX="4.4784615384615378" PointY="1.125" />
+          <ConnectorPoint PointX="8" PointY="3.1003120930989585" />
+          <ConnectorPoint PointX="5" PointY="3.1003120930989585" />
         </AssociationConnector>
         <AssociationConnector Association="JiaoxueJihua.UserInfoPlan">
           <ConnectorPoint PointX="7.25" PointY="2.0770064290364587" />
           <ConnectorPoint PointX="8" PointY="2.0770064290364587" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.SubjectPlan">
+          <ConnectorPoint PointX="6.25" PointY="5.41899658203125" />
+          <ConnectorPoint PointX="8" PointY="5.41899658203125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.SubjectActive">
+          <ConnectorPoint PointX="5.3750025" PointY="4.625" />
+          <ConnectorPoint PointX="5.3750025" PointY="3.51096421061198" />
+          <ConnectorPoint PointX="5" PointY="3.51096421061198" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.ActiveStep">
+          <ConnectorPoint PointX="4" PointY="3.6680916341145831" />
+          <ConnectorPoint PointX="4" PointY="4.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.ContentActive">
+          <ConnectorPoint PointX="2.46875" PointY="4.75" />
+          <ConnectorPoint PointX="2.46875" PointY="2.60649658203125" />
+          <ConnectorPoint PointX="3.5" PointY="2.60649658203125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JiaoxueJihua.PhaseActive">
+          <ConnectorPoint PointX="2.125" PointY="1.73149658203125" />
+          <ConnectorPoint PointX="3.5" PointY="1.73149658203125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="JiaoxueJihua.Form" Width="1.5" PointX="0.75" PointY="2.875" Height="1.5879931640624996" />
+        <AssociationConnector Association="JiaoxueJihua.FormActive">
+          <ConnectorPoint PointX="2.25" PointY="3.2715458170572917" />
+          <ConnectorPoint PointX="2.3854166666666665" PointY="3.2715458170572913" />
+          <ConnectorPoint PointX="2.5520833333333335" PointY="3.2715458170572917" />
+          <ConnectorPoint PointX="3.5" PointY="3.2715458170572917" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

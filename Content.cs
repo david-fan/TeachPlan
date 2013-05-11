@@ -24,55 +24,58 @@ namespace TeachPlan
             get;
             set;
         }
+    
+        public virtual string Name
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Navigation Properties
     
-        public virtual ICollection<Active> Huodong
+        public virtual ICollection<Active> Actives
         {
             get
             {
-                if (_huodong == null)
+                if (_actives == null)
                 {
                     var newCollection = new FixupCollection<Active>();
-                    newCollection.CollectionChanged += FixupHuodong;
-                    _huodong = newCollection;
+                    newCollection.CollectionChanged += FixupActives;
+                    _actives = newCollection;
                 }
-                return _huodong;
+                return _actives;
             }
             set
             {
-                if (!ReferenceEquals(_huodong, value))
+                if (!ReferenceEquals(_actives, value))
                 {
-                    var previousValue = _huodong as FixupCollection<Active>;
+                    var previousValue = _actives as FixupCollection<Active>;
                     if (previousValue != null)
                     {
-                        previousValue.CollectionChanged -= FixupHuodong;
+                        previousValue.CollectionChanged -= FixupActives;
                     }
-                    _huodong = value;
+                    _actives = value;
                     var newValue = value as FixupCollection<Active>;
                     if (newValue != null)
                     {
-                        newValue.CollectionChanged += FixupHuodong;
+                        newValue.CollectionChanged += FixupActives;
                     }
                 }
             }
         }
-        private ICollection<Active> _huodong;
+        private ICollection<Active> _actives;
 
         #endregion
         #region Association Fixup
     
-        private void FixupHuodong(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupActives(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
                 foreach (Active item in e.NewItems)
                 {
-                    if (!item.Content.Contains(this))
-                    {
-                        item.Content.Add(this);
-                    }
+                    item.Content = this;
                 }
             }
     
@@ -80,9 +83,9 @@ namespace TeachPlan
             {
                 foreach (Active item in e.OldItems)
                 {
-                    if (item.Content.Contains(this))
+                    if (ReferenceEquals(item.Content, this))
                     {
-                        item.Content.Remove(this);
+                        item.Content = null;
                     }
                 }
             }

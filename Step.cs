@@ -24,66 +24,52 @@ namespace TeachPlan
             get;
             set;
         }
+    
+        public virtual string Name
+        {
+            get;
+            set;
+        }
+    
+        public virtual string Content
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Navigation Properties
     
-        public virtual ICollection<Active> Huodong
+        public virtual Active Active
         {
-            get
-            {
-                if (_huodong == null)
-                {
-                    var newCollection = new FixupCollection<Active>();
-                    newCollection.CollectionChanged += FixupHuodong;
-                    _huodong = newCollection;
-                }
-                return _huodong;
-            }
+            get { return _active; }
             set
             {
-                if (!ReferenceEquals(_huodong, value))
+                if (!ReferenceEquals(_active, value))
                 {
-                    var previousValue = _huodong as FixupCollection<Active>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= FixupHuodong;
-                    }
-                    _huodong = value;
-                    var newValue = value as FixupCollection<Active>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += FixupHuodong;
-                    }
+                    var previousValue = _active;
+                    _active = value;
+                    FixupActive(previousValue);
                 }
             }
         }
-        private ICollection<Active> _huodong;
+        private Active _active;
 
         #endregion
         #region Association Fixup
     
-        private void FixupHuodong(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupActive(Active previousValue)
         {
-            if (e.NewItems != null)
+            if (previousValue != null && previousValue.Steps.Contains(this))
             {
-                foreach (Active item in e.NewItems)
-                {
-                    if (!item.Step.Contains(this))
-                    {
-                        item.Step.Add(this);
-                    }
-                }
+                previousValue.Steps.Remove(this);
             }
     
-            if (e.OldItems != null)
+            if (Active != null)
             {
-                foreach (Active item in e.OldItems)
+                if (!Active.Steps.Contains(this))
                 {
-                    if (item.Step.Contains(this))
-                    {
-                        item.Step.Remove(this);
-                    }
+                    Active.Steps.Add(this);
                 }
             }
         }

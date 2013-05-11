@@ -1,0 +1,41 @@
+﻿@model TeachPlan.Active
+@Html.HiddenFor(m => m.Id)
+@using (Ajax.BeginForm("AddActive", "Home", new AjaxOptions
+{
+    OnSuccess = "OnAddActiveSucess",
+    UpdateTargetId = "Actives",
+    InsertionMode = InsertionMode.InsertAfter
+}, new { @id = "addActiveForm" }))
+{
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Name)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Subject)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(m => m.Subject.Id, TeachPlan.Controllers.HomeController.getAllSubjects())
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Phase)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(m => m.Phase.Id, TeachPlan.Controllers.HomeController.getAllPhases())
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Content)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(m => m.Content.Id, TeachPlan.Controllers.HomeController.getAllContents())
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Form)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(m => m.Form.Id, TeachPlan.Controllers.HomeController.getAllForms())
+    </div>
+}

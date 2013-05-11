@@ -15,7 +15,7 @@ using System.Collections.Specialized;
 
 namespace TeachPlan
 {
-    public partial class Phase
+    public partial class Form
     {
         #region Primitive Properties
     
@@ -34,48 +34,48 @@ namespace TeachPlan
         #endregion
         #region Navigation Properties
     
-        public virtual ICollection<Active> Actives
+        public virtual ICollection<Active> Active
         {
             get
             {
-                if (_actives == null)
+                if (_active == null)
                 {
                     var newCollection = new FixupCollection<Active>();
-                    newCollection.CollectionChanged += FixupActives;
-                    _actives = newCollection;
+                    newCollection.CollectionChanged += FixupActive;
+                    _active = newCollection;
                 }
-                return _actives;
+                return _active;
             }
             set
             {
-                if (!ReferenceEquals(_actives, value))
+                if (!ReferenceEquals(_active, value))
                 {
-                    var previousValue = _actives as FixupCollection<Active>;
+                    var previousValue = _active as FixupCollection<Active>;
                     if (previousValue != null)
                     {
-                        previousValue.CollectionChanged -= FixupActives;
+                        previousValue.CollectionChanged -= FixupActive;
                     }
-                    _actives = value;
+                    _active = value;
                     var newValue = value as FixupCollection<Active>;
                     if (newValue != null)
                     {
-                        newValue.CollectionChanged += FixupActives;
+                        newValue.CollectionChanged += FixupActive;
                     }
                 }
             }
         }
-        private ICollection<Active> _actives;
+        private ICollection<Active> _active;
 
         #endregion
         #region Association Fixup
     
-        private void FixupActives(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupActive(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
                 foreach (Active item in e.NewItems)
                 {
-                    item.Phase = this;
+                    item.Form = this;
                 }
             }
     
@@ -83,9 +83,9 @@ namespace TeachPlan
             {
                 foreach (Active item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.Phase, this))
+                    if (ReferenceEquals(item.Form, this))
                     {
-                        item.Phase = null;
+                        item.Form = null;
                     }
                 }
             }

@@ -34,96 +34,74 @@ namespace TeachPlan
         #endregion
         #region Navigation Properties
     
-        public virtual ICollection<Active> Huodong
+        public virtual ICollection<Plan> Plans
         {
             get
             {
-                if (_huodong == null)
-                {
-                    var newCollection = new FixupCollection<Active>();
-                    newCollection.CollectionChanged += FixupHuodong;
-                    _huodong = newCollection;
-                }
-                return _huodong;
-            }
-            set
-            {
-                if (!ReferenceEquals(_huodong, value))
-                {
-                    var previousValue = _huodong as FixupCollection<Active>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= FixupHuodong;
-                    }
-                    _huodong = value;
-                    var newValue = value as FixupCollection<Active>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += FixupHuodong;
-                    }
-                }
-            }
-        }
-        private ICollection<Active> _huodong;
-    
-        public virtual ICollection<Plan> Fangan
-        {
-            get
-            {
-                if (_fangan == null)
+                if (_plans == null)
                 {
                     var newCollection = new FixupCollection<Plan>();
-                    newCollection.CollectionChanged += FixupFangan;
-                    _fangan = newCollection;
+                    newCollection.CollectionChanged += FixupPlans;
+                    _plans = newCollection;
                 }
-                return _fangan;
+                return _plans;
             }
             set
             {
-                if (!ReferenceEquals(_fangan, value))
+                if (!ReferenceEquals(_plans, value))
                 {
-                    var previousValue = _fangan as FixupCollection<Plan>;
+                    var previousValue = _plans as FixupCollection<Plan>;
                     if (previousValue != null)
                     {
-                        previousValue.CollectionChanged -= FixupFangan;
+                        previousValue.CollectionChanged -= FixupPlans;
                     }
-                    _fangan = value;
+                    _plans = value;
                     var newValue = value as FixupCollection<Plan>;
                     if (newValue != null)
                     {
-                        newValue.CollectionChanged += FixupFangan;
+                        newValue.CollectionChanged += FixupPlans;
                     }
                 }
             }
         }
-        private ICollection<Plan> _fangan;
+        private ICollection<Plan> _plans;
+    
+        public virtual ICollection<Active> Actives
+        {
+            get
+            {
+                if (_actives == null)
+                {
+                    var newCollection = new FixupCollection<Active>();
+                    newCollection.CollectionChanged += FixupActives;
+                    _actives = newCollection;
+                }
+                return _actives;
+            }
+            set
+            {
+                if (!ReferenceEquals(_actives, value))
+                {
+                    var previousValue = _actives as FixupCollection<Active>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= FixupActives;
+                    }
+                    _actives = value;
+                    var newValue = value as FixupCollection<Active>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += FixupActives;
+                    }
+                }
+            }
+        }
+        private ICollection<Active> _actives;
 
         #endregion
         #region Association Fixup
     
-        private void FixupHuodong(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (Active item in e.NewItems)
-                {
-                    item.Subject = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (Active item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.Subject, this))
-                    {
-                        item.Subject = null;
-                    }
-                }
-            }
-        }
-    
-        private void FixupFangan(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupPlans(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
@@ -136,6 +114,28 @@ namespace TeachPlan
             if (e.OldItems != null)
             {
                 foreach (Plan item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.Subject, this))
+                    {
+                        item.Subject = null;
+                    }
+                }
+            }
+        }
+    
+        private void FixupActives(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (Active item in e.NewItems)
+                {
+                    item.Subject = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (Active item in e.OldItems)
                 {
                     if (ReferenceEquals(item.Subject, this))
                     {

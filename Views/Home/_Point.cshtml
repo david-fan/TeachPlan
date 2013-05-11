@@ -1,0 +1,14 @@
+﻿@model TeachPlan.Point
+<li>
+    <div>
+        @Html.TextBoxFor(m => m.Content)
+    </div>
+    <div>
+        <ul>
+        @foreach (var item in Model.Method)
+        {
+            @Html.Partial("_Method",item)
+        }
+        </ul>
+    </div>
+</li>

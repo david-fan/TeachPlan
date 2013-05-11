@@ -1,0 +1,43 @@
+﻿@model TeachPlan.Plan
+<div class="editor-label">
+    @Html.LabelFor(m => m.Name)
+</div>
+<div class="editor-field">
+    @Model.Name
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.ClassName)
+</div>
+<div class="editor-field">
+    @Model.ClassName
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.Organiser)
+</div>
+<div class="editor-field">
+    @Model.Organiser
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.Public)
+</div>
+<div class="editor-field">
+    @Model.Public
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.Subject)
+</div>
+<div class="editor-field">
+    @TeachPlan.Controllers.HomeController.getSubjectName(Model.Subject.Id)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.Grade)
+</div>
+<div class="editor-field">
+    @TeachPlan.Controllers.HomeController.getGradeName(Model.Grade.Id)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.Textbook)
+</div>
+<div class="editor-field">
+    @TeachPlan.Controllers.HomeController.getTextbookName(Model.Textbook.Id)
+</div>

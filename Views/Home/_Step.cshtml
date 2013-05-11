@@ -1,0 +1,14 @@
+﻿@model TeachPlan.Step
+<div class="editor-label">
+    @Html.LabelFor(m => m.Name)
+</div>
+<div class="editor-field">
+    @Model.Name
+</div>
+<div class="editor-label">
+    @Html.LabelFor(m => m.Content)
+</div>
+<div class="editor-field">
+    @Model.Content
+</div>
+@Ajax.ActionLink("删除该步骤", "RemoveStep", new { stepId = Model.Id }, new AjaxOptions { OnSuccess="removeStepSucess"}, new { @class = "action" })

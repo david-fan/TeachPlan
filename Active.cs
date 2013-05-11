@@ -34,37 +34,20 @@ namespace TeachPlan
         #endregion
         #region Navigation Properties
     
-        public virtual ICollection<Content> Content
+        public virtual Plan Plan
         {
-            get
-            {
-                if (_content == null)
-                {
-                    var newCollection = new FixupCollection<Content>();
-                    newCollection.CollectionChanged += FixupContent;
-                    _content = newCollection;
-                }
-                return _content;
-            }
+            get { return _plan; }
             set
             {
-                if (!ReferenceEquals(_content, value))
+                if (!ReferenceEquals(_plan, value))
                 {
-                    var previousValue = _content as FixupCollection<Content>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= FixupContent;
-                    }
-                    _content = value;
-                    var newValue = value as FixupCollection<Content>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += FixupContent;
-                    }
+                    var previousValue = _plan;
+                    _plan = value;
+                    FixupPlan(previousValue);
                 }
             }
         }
-        private ICollection<Content> _content;
+        private Plan _plan;
     
         public virtual Subject Subject
         {
@@ -81,150 +64,85 @@ namespace TeachPlan
         }
         private Subject _subject;
     
-        public virtual ICollection<Step> Step
+        public virtual ICollection<Step> Steps
         {
             get
             {
-                if (_step == null)
+                if (_steps == null)
                 {
                     var newCollection = new FixupCollection<Step>();
-                    newCollection.CollectionChanged += FixupStep;
-                    _step = newCollection;
+                    newCollection.CollectionChanged += FixupSteps;
+                    _steps = newCollection;
                 }
-                return _step;
+                return _steps;
             }
             set
             {
-                if (!ReferenceEquals(_step, value))
+                if (!ReferenceEquals(_steps, value))
                 {
-                    var previousValue = _step as FixupCollection<Step>;
+                    var previousValue = _steps as FixupCollection<Step>;
                     if (previousValue != null)
                     {
-                        previousValue.CollectionChanged -= FixupStep;
+                        previousValue.CollectionChanged -= FixupSteps;
                     }
-                    _step = value;
+                    _steps = value;
                     var newValue = value as FixupCollection<Step>;
                     if (newValue != null)
                     {
-                        newValue.CollectionChanged += FixupStep;
+                        newValue.CollectionChanged += FixupSteps;
                     }
                 }
             }
         }
-        private ICollection<Step> _step;
+        private ICollection<Step> _steps;
     
-        public virtual ICollection<Phase> Phase
+        public virtual Content Content
         {
-            get
+            get { return _content; }
+            set
             {
-                if (_phase == null)
+                if (!ReferenceEquals(_content, value))
                 {
-                    var newCollection = new FixupCollection<Phase>();
-                    newCollection.CollectionChanged += FixupPhase;
-                    _phase = newCollection;
+                    var previousValue = _content;
+                    _content = value;
+                    FixupContent(previousValue);
                 }
-                return _phase;
             }
+        }
+        private Content _content;
+    
+        public virtual Phase Phase
+        {
+            get { return _phase; }
             set
             {
                 if (!ReferenceEquals(_phase, value))
                 {
-                    var previousValue = _phase as FixupCollection<Phase>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= FixupPhase;
-                    }
+                    var previousValue = _phase;
                     _phase = value;
-                    var newValue = value as FixupCollection<Phase>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += FixupPhase;
-                    }
+                    FixupPhase(previousValue);
                 }
             }
         }
-        private ICollection<Phase> _phase;
+        private Phase _phase;
     
-        public virtual Plan Plan
+        public virtual Form Form
         {
-            get { return _plan; }
+            get { return _form; }
             set
             {
-                if (!ReferenceEquals(_plan, value))
+                if (!ReferenceEquals(_form, value))
                 {
-                    var previousValue = _plan;
-                    _plan = value;
-                    FixupPlan(previousValue);
+                    var previousValue = _form;
+                    _form = value;
+                    FixupForm(previousValue);
                 }
             }
         }
-        private Plan _plan;
-    
-        public virtual ICollection<Active> ChildActives
-        {
-            get
-            {
-                if (_childActives == null)
-                {
-                    var newCollection = new FixupCollection<Active>();
-                    newCollection.CollectionChanged += FixupChildActives;
-                    _childActives = newCollection;
-                }
-                return _childActives;
-            }
-            set
-            {
-                if (!ReferenceEquals(_childActives, value))
-                {
-                    var previousValue = _childActives as FixupCollection<Active>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= FixupChildActives;
-                    }
-                    _childActives = value;
-                    var newValue = value as FixupCollection<Active>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += FixupChildActives;
-                    }
-                }
-            }
-        }
-        private ICollection<Active> _childActives;
-    
-        public virtual Active ParentActive
-        {
-            get { return _parentActive; }
-            set
-            {
-                if (!ReferenceEquals(_parentActive, value))
-                {
-                    var previousValue = _parentActive;
-                    _parentActive = value;
-                    FixupParentActive(previousValue);
-                }
-            }
-        }
-        private Active _parentActive;
+        private Form _form;
 
         #endregion
         #region Association Fixup
-    
-        private void FixupSubject(Subject previousValue)
-        {
-            if (previousValue != null && previousValue.Huodong.Contains(this))
-            {
-                previousValue.Huodong.Remove(this);
-            }
-    
-            if (Subject != null)
-            {
-                if (!Subject.Huodong.Contains(this))
-                {
-                    Subject.Huodong.Add(this);
-                }
-            }
-        }
     
         private void FixupPlan(Plan previousValue)
         {
@@ -242,57 +160,77 @@ namespace TeachPlan
             }
         }
     
-        private void FixupParentActive(Active previousValue)
+        private void FixupSubject(Subject previousValue)
         {
-            if (previousValue != null && previousValue.ChildActives.Contains(this))
+            if (previousValue != null && previousValue.Actives.Contains(this))
             {
-                previousValue.ChildActives.Remove(this);
+                previousValue.Actives.Remove(this);
             }
     
-            if (ParentActive != null)
+            if (Subject != null)
             {
-                if (!ParentActive.ChildActives.Contains(this))
+                if (!Subject.Actives.Contains(this))
                 {
-                    ParentActive.ChildActives.Add(this);
+                    Subject.Actives.Add(this);
                 }
             }
         }
     
-        private void FixupContent(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupContent(Content previousValue)
         {
-            if (e.NewItems != null)
+            if (previousValue != null && previousValue.Actives.Contains(this))
             {
-                foreach (Content item in e.NewItems)
-                {
-                    if (!item.Huodong.Contains(this))
-                    {
-                        item.Huodong.Add(this);
-                    }
-                }
+                previousValue.Actives.Remove(this);
             }
     
-            if (e.OldItems != null)
+            if (Content != null)
             {
-                foreach (Content item in e.OldItems)
+                if (!Content.Actives.Contains(this))
                 {
-                    if (item.Huodong.Contains(this))
-                    {
-                        item.Huodong.Remove(this);
-                    }
+                    Content.Actives.Add(this);
                 }
             }
         }
     
-        private void FixupStep(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupPhase(Phase previousValue)
+        {
+            if (previousValue != null && previousValue.Actives.Contains(this))
+            {
+                previousValue.Actives.Remove(this);
+            }
+    
+            if (Phase != null)
+            {
+                if (!Phase.Actives.Contains(this))
+                {
+                    Phase.Actives.Add(this);
+                }
+            }
+        }
+    
+        private void FixupForm(Form previousValue)
+        {
+            if (previousValue != null && previousValue.Active.Contains(this))
+            {
+                previousValue.Active.Remove(this);
+            }
+    
+            if (Form != null)
+            {
+                if (!Form.Active.Contains(this))
+                {
+                    Form.Active.Add(this);
+                }
+            }
+        }
+    
+        private void FixupSteps(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
                 foreach (Step item in e.NewItems)
                 {
-                    if (!item.Huodong.Contains(this))
-                    {
-                        item.Huodong.Add(this);
-                    }
+                    item.Active = this;
                 }
             }
     
@@ -300,56 +238,9 @@ namespace TeachPlan
             {
                 foreach (Step item in e.OldItems)
                 {
-                    if (item.Huodong.Contains(this))
+                    if (ReferenceEquals(item.Active, this))
                     {
-                        item.Huodong.Remove(this);
-                    }
-                }
-            }
-        }
-    
-        private void FixupPhase(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (Phase item in e.NewItems)
-                {
-                    if (!item.Active.Contains(this))
-                    {
-                        item.Active.Add(this);
-                    }
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (Phase item in e.OldItems)
-                {
-                    if (item.Active.Contains(this))
-                    {
-                        item.Active.Remove(this);
-                    }
-                }
-            }
-        }
-    
-        private void FixupChildActives(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (Active item in e.NewItems)
-                {
-                    item.ParentActive = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (Active item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.ParentActive, this))
-                    {
-                        item.ParentActive = null;
+                        item.Active = null;
                     }
                 }
             }

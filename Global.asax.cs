@@ -22,11 +22,24 @@ namespace TeachPlan
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "RemoveStep", // Route name
+                "Home/RemoveStep/{stepId}", // URL with parameters
+                new { controller = "Home", action = "RemoveStep", stepId = UrlParameter.Optional } // Parameter defaults
+
+            );
+            
+            routes.MapRoute(
+                "RemoveActive", // Route name
+                "Home/RemoveActive/{acitveId}", // URL with parameters
+                new { controller = "Home", action = "RemoveActive", acitveId = UrlParameter.Optional } // Parameter defaults
+
+            );
+            
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()

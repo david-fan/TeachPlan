@@ -12,59 +12,55 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
 
 namespace TeachPlan
 {
     public partial class Plan
     {
         #region Primitive Properties
-
+    
         public virtual int Id
         {
             get;
             set;
         }
-
+    
         public virtual string Desc
         {
             get;
             set;
         }
-        [Required]
-        [Display(Name = "案例名称")]
+    
         public virtual string Name
         {
             get;
             set;
         }
-        [Display(Name = "作者")]
+    
         public virtual string Author
         {
             get;
             set;
         }
-        [Required]
-        [Display(Name = "作者单位")]
+    
         public virtual string Organiser
         {
             get;
             set;
         }
-        [Display(Name = "引用次数")]
+    
         public virtual int Refer
         {
             get;
             set;
         }
-        [Display(Name = "公开")]
+    
         public virtual bool Public
         {
             get;
             set;
         }
-        [Required]
-        [Display(Name = "课时名称")]
+    
         public virtual string ClassName
         {
             get;
@@ -73,23 +69,7 @@ namespace TeachPlan
 
         #endregion
         #region Navigation Properties
-        [Display(Name = "学科")]
-        public virtual Subject Subject
-        {
-            get { return _subject; }
-            set
-            {
-                if (!ReferenceEquals(_subject, value))
-                {
-                    var previousValue = _subject;
-                    _subject = value;
-                    FixupSubject(previousValue);
-                }
-            }
-        }
-        private Subject _subject;
-
-        [Display(Name = "年级")]
+    
         public virtual Grade Grade
         {
             get { return _grade; }
@@ -104,8 +84,7 @@ namespace TeachPlan
             }
         }
         private Grade _grade;
-
-        [Display(Name = "教材")]
+    
         public virtual Textbook Textbook
         {
             get { return _textbook; }
@@ -120,7 +99,7 @@ namespace TeachPlan
             }
         }
         private Textbook _textbook;
-
+    
         public virtual ICollection<Think> Think
         {
             get
@@ -152,7 +131,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Think> _think;
-
+    
         public virtual ICollection<Ready> Ready
         {
             get
@@ -184,7 +163,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Ready> _ready;
-
+    
         public virtual ICollection<Judge> Judge
         {
             get
@@ -216,7 +195,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Judge> _judge;
-
+    
         public virtual ICollection<Point> Point
         {
             get
@@ -248,7 +227,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Point> _point;
-
+    
         public virtual ICollection<Character> Character
         {
             get
@@ -280,7 +259,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Character> _character;
-
+    
         public virtual ICollection<Target> Target
         {
             get
@@ -312,7 +291,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Target> _target;
-
+    
         public virtual ICollection<Active> Active
         {
             get
@@ -344,7 +323,7 @@ namespace TeachPlan
             }
         }
         private ICollection<Active> _active;
-
+    
         public virtual UserInfo UserInfo
         {
             get { return _userInfo; }
@@ -359,33 +338,32 @@ namespace TeachPlan
             }
         }
         private UserInfo _userInfo;
-
-        #endregion
-        #region Association Fixup
-
-        private void FixupSubject(Subject previousValue)
+    
+        public virtual Subject Subject
         {
-            if (previousValue != null && previousValue.Fangan.Contains(this))
+            get { return _subject; }
+            set
             {
-                previousValue.Fangan.Remove(this);
-            }
-
-            if (Subject != null)
-            {
-                if (!Subject.Fangan.Contains(this))
+                if (!ReferenceEquals(_subject, value))
                 {
-                    Subject.Fangan.Add(this);
+                    var previousValue = _subject;
+                    _subject = value;
+                    FixupSubject(previousValue);
                 }
             }
         }
+        private Subject _subject;
 
+        #endregion
+        #region Association Fixup
+    
         private void FixupGrade(Grade previousValue)
         {
             if (previousValue != null && previousValue.Fangan.Contains(this))
             {
                 previousValue.Fangan.Remove(this);
             }
-
+    
             if (Grade != null)
             {
                 if (!Grade.Fangan.Contains(this))
@@ -394,14 +372,14 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupTextbook(Textbook previousValue)
         {
             if (previousValue != null && previousValue.Fangan.Contains(this))
             {
                 previousValue.Fangan.Remove(this);
             }
-
+    
             if (Textbook != null)
             {
                 if (!Textbook.Fangan.Contains(this))
@@ -410,14 +388,14 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupUserInfo(UserInfo previousValue)
         {
             if (previousValue != null && previousValue.Plan.Contains(this))
             {
                 previousValue.Plan.Remove(this);
             }
-
+    
             if (UserInfo != null)
             {
                 if (!UserInfo.Plan.Contains(this))
@@ -426,7 +404,23 @@ namespace TeachPlan
                 }
             }
         }
-
+    
+        private void FixupSubject(Subject previousValue)
+        {
+            if (previousValue != null && previousValue.Plans.Contains(this))
+            {
+                previousValue.Plans.Remove(this);
+            }
+    
+            if (Subject != null)
+            {
+                if (!Subject.Plans.Contains(this))
+                {
+                    Subject.Plans.Add(this);
+                }
+            }
+        }
+    
         private void FixupThink(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -436,7 +430,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Think item in e.OldItems)
@@ -448,7 +442,7 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupReady(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -458,7 +452,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Ready item in e.OldItems)
@@ -470,7 +464,7 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupJudge(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -480,7 +474,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Judge item in e.OldItems)
@@ -492,7 +486,7 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupPoint(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -502,7 +496,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Point item in e.OldItems)
@@ -514,7 +508,7 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupCharacter(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -524,7 +518,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Character item in e.OldItems)
@@ -536,7 +530,7 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupTarget(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -546,7 +540,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Target item in e.OldItems)
@@ -558,7 +552,7 @@ namespace TeachPlan
                 }
             }
         }
-
+    
         private void FixupActive(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -568,7 +562,7 @@ namespace TeachPlan
                     item.Plan = this;
                 }
             }
-
+    
             if (e.OldItems != null)
             {
                 foreach (Active item in e.OldItems)
